@@ -26,6 +26,34 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--surface);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--secondary-light) 0%, var(--accent) 100%);
+  border-radius: 100px;
+  border: 2px solid var(--surface);
+  min-height: 40px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--surface);
 }
 
 body {
@@ -158,6 +186,8 @@ body {
 .slides-wrapper {
   margin-left: var(--nav-width);
   min-height: 100dvh;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--surface);
 }
 
 .slide {
@@ -378,15 +408,134 @@ body {
   line-height: 1.6;
 }
 
-/* ── Phase slides with images ── */
+/* ── Slides with media (text + image) ── */
+.slide--media .slide__inner,
 .slide--phase .slide__inner {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
-  align-items: start;
+  align-items: center;
 }
 
-/* ── Paradox cards ── */
+.slide--media .slide__subtitle {
+  margin-bottom: 1rem;
+  max-width: none;
+}
+
+.slide--media .slide__body {
+  max-width: none;
+}
+
+.slide--media figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide--media-with-footer .slide__inner {
+  grid-template-rows: auto auto;
+  row-gap: 1.75rem;
+}
+
+.slide--media-with-footer .thesis-block--footer {
+  grid-column: 1 / -1;
+  margin-top: 0;
+}
+
+.slide__body--highlight {
+  font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.slide__body--highlight strong {
+  display: block;
+  color: var(--secondary);
+  font-weight: 600;
+  margin-top: 0.75rem;
+}
+
+.slide__body--highlight strong:first-child {
+  margin-top: 0;
+}
+
+.detail-list--compact {
+  gap: 0.55rem;
+  margin-top: 0.75rem;
+}
+
+.detail-list--compact li {
+  font-size: clamp(0.85rem, 1.5vw, 0.92rem);
+  color: var(--text-muted);
+}
+
+.thesis-block--compact {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+}
+
+.thesis-block--compact p {
+  font-size: clamp(0.92rem, 2vw, 1.05rem);
+}
+
+/* ── Media frames (photos) ── */
+.media-frame {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 40px rgba(1, 25, 77, 0.1);
+  background: var(--surface);
+  width: 100%;
+}
+
+.media-frame::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
+  pointer-events: none;
+}
+
+.media-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  max-height: min(420px, 52vh);
+  cursor: zoom-in;
+}
+
+.media-caption {
+  margin-top: 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-light);
+  text-align: center;
+}
+
+/* ── Phase slides with images ── */
+
+.slide--phase .slide__inner > figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.slide--phase .slide__inner > div:not(.phase-content) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .paradox-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -433,6 +582,8 @@ body {
 
 .phase-badge {
   display: inline-block;
+  width: fit-content;
+  align-self: flex-start;
   background: var(--secondary);
   color: var(--primary);
   font-weight: 600;
@@ -453,13 +604,6 @@ body {
   border-radius: 50%;
   margin-left: 0.5rem;
   vertical-align: middle;
-}
-
-.phase-time {
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--text-light);
-  margin-bottom: 0.75rem;
 }
 
 .phase-subtitle {
@@ -488,11 +632,14 @@ body {
 }
 
 .detail-list li::before {
-  content: "→";
+  content: "";
   position: absolute;
   left: 0;
-  color: var(--secondary);
-  font-weight: 700;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
 }
 
 .detail-list li strong {
@@ -502,8 +649,12 @@ body {
 
 .inline-symbols {
   font-weight: 700;
-  color: var(--accent);
+  color: var(--secondary);
   letter-spacing: 0.05em;
+}
+
+.inline-symbol--error {
+  color: var(--accent);
 }
 
 .pros-cons {
@@ -582,12 +733,40 @@ body {
 }
 
 /* ── Symbol grid (Pro interface) ── */
+.phase-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  align-self: center;
+  justify-content: center;
+}
+
+.phase-content .phase-badge,
+.phase-content .slide__title,
+.phase-content .phase-subtitle {
+  align-self: flex-start;
+  text-align: left;
+}
+
+.phase-content .phase-subtitle {
+  align-self: stretch;
+}
+
+.phase-content .detail-list {
+  align-self: stretch;
+  text-align: left;
+}
+
 .symbol-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 0.5rem;
   margin-top: 1.5rem;
   max-width: 360px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .symbol-btn {
@@ -626,30 +805,40 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* ── Timeline ── */
+/* ── Timeline (horizontal on desktop) ── */
 .timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin-top: 2rem;
-  max-width: 500px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 6rem;
+  max-width: 100%;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: calc(100% / 6);
+  right: calc(100% / 6);
+  height: 2px;
+  background: var(--border);
+  z-index: 0;
 }
 
 .timeline__item {
   display: flex;
-  gap: 1rem;
-  padding: 1rem 0;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  padding: 0;
   position: relative;
+  z-index: 1;
 }
 
 .timeline__item:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 2.5rem;
-  bottom: 0;
-  width: 2px;
-  background: var(--border);
+  display: none;
 }
 
 .timeline__dot {
@@ -660,7 +849,7 @@ body {
   border: 3px solid var(--primary);
   box-shadow: 0 0 0 2px var(--secondary);
   flex-shrink: 0;
-  margin-top: 4px;
+  margin-top: 0;
 }
 
 .timeline__item:last-child .timeline__dot {
@@ -668,17 +857,23 @@ body {
   box-shadow: 0 0 0 2px var(--accent);
 }
 
+.timeline__content {
+  max-width: 22ch;
+}
+
 .timeline__content strong {
   display: block;
   font-weight: 600;
   font-size: 0.95rem;
   color: var(--secondary);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.35rem;
 }
 
 .timeline__content span {
+  display: block;
   font-size: 0.84rem;
   color: var(--text-muted);
+  line-height: 1.5;
 }
 
 /* ── Q&A slide ── */
@@ -782,7 +977,7 @@ body {
 .mobile-dots {
   display: none;
   position: fixed;
-  bottom: 4.5rem;
+  bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
   gap: 0.4rem;
@@ -855,28 +1050,38 @@ body {
 
   .slides-wrapper {
     margin-left: 0;
-    scroll-snap-type: y mandatory;
-    overflow-y: auto;
-    height: 100dvh;
+    min-height: 100dvh;
+    height: auto;
+    overflow: visible;
   }
 
   .slide {
-    padding: calc(var(--header-height) + 1rem) 1.25rem 7rem;
-    scroll-snap-stop: always;
+    min-height: auto;
+    align-items: start;
+    padding: calc(var(--header-height) + 1rem) 1.25rem 3rem;
+    overflow: visible;
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
   }
 
   .slide--hero .slide__inner,
+  .slide--media .slide__inner,
   .slide--phase .slide__inner {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 
-  .slide--hero .hero-logo {
-    justify-self: center;
+  .slide--media figure,
+  .slide--phase figure {
     order: -1;
   }
 
-  .slide--phase .screenshot-frame {
+  .slide--media-with-footer .thesis-block--footer {
+    order: 3;
+  }
+
+  .slide--hero .hero-logo {
+    justify-self: center;
     order: -1;
   }
 
@@ -896,9 +1101,50 @@ body {
     align-items: start;
   }
 
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 500px;
+  }
+
+  .timeline::before {
+    display: none;
+  }
+
+  .timeline__item {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .timeline__item:not(:last-child)::after {
+    display: block;
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 2.5rem;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .timeline__dot {
+    margin-top: 4px;
+  }
+
+  .timeline__content {
+    max-width: none;
+  }
+
+  .timeline__content span {
+    text-align: left;
+  }
+
   .bottom-nav {
-    left: 0;
-    padding: 0.75rem 1rem;
+    display: none;
   }
 
   .mobile-dots {

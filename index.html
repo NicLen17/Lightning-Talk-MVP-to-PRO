@@ -26,20 +26,21 @@
     <div class="slide-counter" aria-live="polite">
       <span class="slide-counter__current">01</span>
       <span aria-hidden="true"> / </span>
-      <span class="slide-counter__total">09</span>
+      <span class="slide-counter__total">10</span>
     </div>
   </header>
 
   <nav class="side-nav" aria-label="Navegación de diapositivas">
     <button class="nav-dot active" data-slide="0" aria-label="Diapositiva 1: Inicio"></button>
-    <button class="nav-dot" data-slide="1" aria-label="Diapositiva 2: El problema"></button>
-    <button class="nav-dot" data-slide="2" aria-label="Diapositiva 3: La tesis"></button>
-    <button class="nav-dot" data-slide="3" aria-label="Diapositiva 4: Fase 1 MVP"></button>
-    <button class="nav-dot" data-slide="4" aria-label="Diapositiva 5: Fase 2 Visual"></button>
-    <button class="nav-dot" data-slide="5" aria-label="Diapositiva 6: Fase 3 Pro"></button>
-    <button class="nav-dot" data-slide="6" aria-label="Diapositiva 7: La paradoja"></button>
-    <button class="nav-dot" data-slide="7" aria-label="Diapositiva 8: Conclusiones"></button>
-    <button class="nav-dot" data-slide="8" aria-label="Diapositiva 9: Q&A"></button>
+    <button class="nav-dot" data-slide="1" aria-label="Diapositiva 2: Registro manual"></button>
+    <button class="nav-dot" data-slide="2" aria-label="Diapositiva 3: Scouting"></button>
+    <button class="nav-dot" data-slide="3" aria-label="Diapositiva 4: La tesis"></button>
+    <button class="nav-dot" data-slide="4" aria-label="Diapositiva 5: Fase 1 MVP"></button>
+    <button class="nav-dot" data-slide="5" aria-label="Diapositiva 6: Fase 2 Visual"></button>
+    <button class="nav-dot" data-slide="6" aria-label="Diapositiva 7: Fase 3 Pro"></button>
+    <button class="nav-dot" data-slide="7" aria-label="Diapositiva 8: La paradoja"></button>
+    <button class="nav-dot" data-slide="8" aria-label="Diapositiva 9: Conclusiones"></button>
+    <button class="nav-dot" data-slide="9" aria-label="Diapositiva 10: Q&A"></button>
   </nav>
 
   <main class="slides-wrapper" id="slides">
@@ -51,7 +52,7 @@
           <p class="eyebrow">Lightning Talk · UTN</p>
           <h1 class="slide__title slide__title--hero">De <span>MVP</span> a Pro</h1>
           <p class="slide__subtitle">
-            Cuando la interfaz "fea" es la mejor experiencia de usuario.
+            Cuando la interfaz <b>saturada</b> es la mejor experiencia de usuario.
             Construyendo en público el módulo de scouting de Volley Manager.
           </p>
           <div class="hero-meta">
@@ -81,34 +82,74 @@
       </div>
     </section>
 
-    <!-- SLIDE 2: El problema -->
-    <section class="slide" id="slide-1" data-slide="1">
+    <!-- SLIDE 2: Registro manual -->
+    <section class="slide slide--media slide--media-with-footer" id="slide-1" data-slide="1">
       <div class="slide__inner">
-        <p class="eyebrow">Introducción · 0:00 – 3:00</p>
-        <h2 class="slide__title">El problema del <span>tiempo real</span></h2>
-        <p class="slide__subtitle">
-          Registrar acciones de vóley a la velocidad de un partido en vivo.
-          Cada segundo cuenta. Cada clic importa.
-        </p>
-        <div class="card-grid">
-          <article class="card">
-            <h3 class="card__title">Volley Manager</h3>
-            <p class="card__text">Plataforma de gestión deportiva usada en producción para scouting profesional de vóley.</p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">El desafío</h3>
-            <p class="card__text">Un scouter debe capturar decenas de acciones por set sin perder el ritmo del partido.</p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">La pregunta</h3>
-            <p class="card__text">¿Qué interfaz maximiza velocidad y precisión para un usuario experto?</p>
-          </article>
+        <div class="slide__content">
+          <p class="eyebrow">El contexto</p>
+          <h2 class="slide__title">Registrar un partido <span>a mano</span></h2>
+          <div class="slide__body">
+            <p>
+              Anotar un partido de vóley en papel implica registrar cada saque, recepción,
+              ataque y error — jugador por jugador, rally tras rally, sin pausa.
+            </p>
+            <ul class="detail-list detail-list--compact">
+              <li>Un set supera las cien acciones; entre punto y punto quedan segundos.</li>
+              <li>Hay que mirar la cancha y escribir al mismo tiempo.</li>
+              <li>Se pierden acciones, hay errores de numeración o te quedás atrás.</li>
+              <li>A esa velocidad, hacerlo a mano es humanamente inviable.</li>
+            </ul>
+          </div>
+        </div>
+        <figure>
+          <div class="media-frame">
+            <img
+              src="img/scouting-papel.jpg"
+              alt="Mano completando una planilla de vóley en papel con lápiz"
+              loading="lazy"
+            >
+          </div>
+          <figcaption class="media-caption">Planilla manual — anotación en tiempo real</figcaption>
+        </figure>
+        <div class="thesis-block thesis-block--footer">
+          <p>
+            Tenemos definido el requerimiento: <b>capturar</b>
+            datos mientras el partido sigue, sin perder el ritmo.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 3: La tesis -->
-    <section class="slide" id="slide-2" data-slide="2">
+    <!-- SLIDE 3: Scouting -->
+    <section class="slide slide--media" id="slide-2" data-slide="2">
+      <div class="slide__inner">
+        <div class="slide__content">
+          <p class="eyebrow">Introducción</p>
+          <h2 class="slide__title">Sistema de <span>scouting</span></h2>
+          <p class="slide__subtitle">
+            Un módulo de scouting reemplaza la planilla manual: registra acciones de cada jugador
+            en vivo para generar estadísticas, tendencias y material de análisis durante y después del partido.
+          </p>
+          <p class="slide__body slide__body--highlight">
+            <strong>Requerimiento:</strong> capturar decenas de acciones por set sin perder el ritmo del partido.
+            <strong>Pregunta de diseño:</strong> ¿qué interfaz lo hace posible?
+          </p>
+        </div>
+        <figure>
+          <div class="media-frame">
+            <img
+              src="img/sistema-scouting-generico.jpg"
+              alt="Analista usando un sistema de scouting digital en tablet durante un partido"
+              loading="lazy"
+            >
+          </div>
+          <figcaption class="media-caption">Scouting digital — captura en vivo desde dispositivo</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: La tesis -->
+    <section class="slide" id="slide-3" data-slide="3">
       <div class="slide__inner">
         <p class="eyebrow">La tesis central</p>
         <h2 class="slide__title">Minimalista <span>≠</span> Mejor UX</h2>
@@ -124,33 +165,32 @@
             <div class="timeline__dot"></div>
             <div class="timeline__content">
               <strong>Fase 1 — MVP Tabular</strong>
-              <span>3:00 – 6:00 · Tabla clásica, curva cero, operación lenta</span>
+              <span>Tabla clásica, curva cero, operación lenta</span>
             </div>
           </div>
           <div class="timeline__item">
             <div class="timeline__dot"></div>
             <div class="timeline__content">
               <strong>Fase 2 — Salto Espacial</strong>
-              <span>6:00 – 9:00 · Mapeo mental directo, aire desperdiciado</span>
+              <span>Mapeo mental directo, aire desperdiciado</span>
             </div>
           </div>
           <div class="timeline__item">
             <div class="timeline__dot"></div>
             <div class="timeline__content">
               <strong>Fase 3 — Herramienta Pro</strong>
-              <span>9:00 – 13:00 · Eficiencia operativa máxima, símbolos internacionales</span>
+              <span>Eficiencia operativa máxima, símbolos internacionales</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 4: Fase 1 -->
-    <section class="slide slide--phase" id="slide-3" data-slide="3">
+    <!-- SLIDE 5: Fase 1 -->
+    <section class="slide slide--phase" id="slide-4" data-slide="4">
       <div class="slide__inner">
         <div>
           <span class="phase-badge">FASE 1</span>
-          <p class="phase-time">3:00 – 6:00</p>
           <h2 class="slide__title">MVP <span>Tabular</span></h2>
           <ul class="detail-list">
             <li>
@@ -184,26 +224,29 @@
       </div>
     </section>
 
-    <!-- SLIDE 5: Fase 2 -->
-    <section class="slide slide--phase" id="slide-4" data-slide="4">
+    <!-- SLIDE 6: Fase 2 -->
+    <section class="slide slide--phase" id="slide-5" data-slide="5">
       <div class="slide__inner">
         <div>
           <span class="phase-badge">FASE 2</span>
-          <p class="phase-time">6:00 – 9:00</p>
           <h2 class="slide__title">Salto <span>Espacial</span></h2>
           <p class="phase-subtitle">Mapeo Mental Directo</p>
           <ul class="detail-list">
             <li>
               <strong>El salto conceptual:</strong>
-              Pasamos de leer una lista de nombres a tocar zonas de una cancha en vivo. El analista asocia mentalmente al jugador con su posición real en el campo.
+              Pasamos de leer una lista de nombres a tocar zonas de una cancha en vivo. El analista asocia al jugador con su posición real en el campo.
             </li>
             <li>
-              <strong>El nuevo cuello de botella:</strong>
-              La distancia física que recorre el mouse entre seleccionar un jugador (izquierda) y clickear la acción (derecha) consume fracciones de segundo críticas en cada rally.
+              <strong>Más contexto en pantalla:</strong>
+              Zonas por número, nombres completos de jugadoras, acciones con descripciones de cada valoración y botones grandes para interactuar.
             </li>
             <li>
-              <strong>Evaluación UX:</strong>
-              Demasiado "aire desperdiciado" visualmente. La UX mejora en comprensión y mapeo mental, pero no alcanza el límite de velocidad que exige el scouting de alto rendimiento.
+              <strong>El límite del diseño web:</strong>
+              Aun así, la interfaz seguía atada a patrones tradicionales: paddings, márgenes y espacios en blanco que no aportaban al scouter. El error fue tratar el scouting como un diseño web genérico.
+            </li>
+            <li>
+              <strong>El cuello de botella:</strong>
+              La distancia del mouse entre seleccionar jugador y registrar la acción consume fracciones de segundo críticas en cada rally — demasiado aire desperdiciado para el ritmo del partido.
             </li>
           </ul>
         </div>
@@ -220,28 +263,31 @@
       </div>
     </section>
 
-    <!-- SLIDE 6: Fase 3 -->
-    <section class="slide slide--phase" id="slide-5" data-slide="5">
+    <!-- SLIDE 7: Fase 3 -->
+    <section class="slide slide--phase" id="slide-6" data-slide="6">
       <div class="slide__inner">
-        <div>
+        <div class="phase-content">
           <span class="phase-badge">FASE 3</span>
-          <p class="phase-time">9:00 – 13:00</p>
           <h2 class="slide__title">Herramienta <span>Pro</span></h2>
           <p class="phase-subtitle">Eficiencia Operativa Máxima</p>
           <ul class="detail-list">
             <li>
-              <strong>Dashboard denso y full-width:</strong>
-              Implementamos símbolos internacionales estandarizados de scouting —
-              <span class="inline-symbols">#, +, /, −, =</span>
-              — organizados en una grilla por tipo de acción: recepción, contraataque, bloqueo y defensa.
+              <strong>Diseño 100% de nicho:</strong>
+              Dejamos atrás patrones clásicos de UI por un desarrollo personalizado al usuario experto — símbolos internacionales
+              <span class="inline-symbols">#, +, /, −, <span class="inline-symbol--error">=</span></span>
+              en grilla densa por tipo de acción.
             </li>
             <li>
-              <strong>Carga cognitiva altísima:</strong>
-              La interfaz es intencionalmente compleja para el novato, pero se convierte en la herramienta definitiva para el analista profesional que ya domina el dominio.
+              <strong>Menos ayuda, más velocidad:</strong>
+              La curva de aprendizaje sube respecto a la Fase 2: desaparecen descripciones, nombres de jugadoras y texto explicativo de las valoraciones.
+            </li>
+            <li>
+              <strong>El trade-off:</strong>
+              Para el analista profesional es la herramienta definitiva; el usuario promedio queda fuera de la ecuación. Menos alcance, pero infinitamente más útil para la captura de datos específica.
             </li>
             <li>
               <strong>Filosofía UX:</strong>
-              Minimizar el movimiento del cursor y maximizar el uso de atajos de teclado. La UX prioriza <em>performance</em> sobre simplicidad visual — un clic por acción, todo visible de un vistazo.
+              Minimizar el movimiento del cursor y maximizar atajos de teclado. La UX prioriza <em>performance</em> sobre legibilidad — un clic por acción, todo visible de un vistazo.
             </li>
           </ul>
           <div class="symbol-grid" aria-label="Símbolos de scouting internacional">
@@ -249,7 +295,7 @@
             <div class="symbol-btn">+</div>
             <div class="symbol-btn">!</div>
             <div class="symbol-btn">/</div>
-            <div class="symbol-btn symbol-btn--error">−</div>
+            <div class="symbol-btn">−</div>
             <div class="symbol-btn symbol-btn--error">=</div>
           </div>
         </div>
@@ -266,11 +312,14 @@
       </div>
     </section>
 
-    <!-- SLIDE 7: La Paradoja -->
-    <section class="slide" id="slide-6" data-slide="6">
+    <!-- SLIDE 8: La Paradoja -->
+    <section class="slide" id="slide-7" data-slide="7">
       <div class="slide__inner">
-        <p class="eyebrow">La lección · 13:00 – 14:00</p>
-        <h2 class="slide__title">La Paradoja <span>UI vs UX</span></h2>
+        <p class="eyebrow">La lección</p>
+        <h2 class="slide__title">Ninguna versión es <span>“la mejor”</span></h2>
+        <p class="slide__subtitle">
+          Las tres iteraciones cumplieron su propósito. Cuál conviene depende del usuario al que apunten — no de cuál sea la más reciente.
+        </p>
         <div class="paradox-grid">
           <article class="paradox-card">
             <div class="paradox-card__icon" aria-hidden="true">
@@ -280,8 +329,8 @@
                 <path d="M18 8c1.5 0 3 1 3 2.5v2"/>
               </svg>
             </div>
-            <h3 class="paradox-card__title">El Usuario Manda</h3>
-            <p class="paradox-card__text">El MVP era funcional y estético, pero el profesional en la tribuna dictó la necesidad de escalar la interfaz. El usuario final es quien define qué es "buen diseño".</p>
+            <h3 class="paradox-card__title">Tres públicos, tres herramientas</h3>
+            <p class="paradox-card__text">La Fase 1 la puede usar casi cualquiera — ideal para alguien de una federación que registra a grandes rasgos un partido y su resultado. Para ese usuario, las fases 2 y 3 no le servirían: más datos no ayudan si no puede operarlos.</p>
           </article>
           <article class="paradox-card">
             <div class="paradox-card__icon" aria-hidden="true">
@@ -290,8 +339,8 @@
                 <path d="M9 18h6"/>
               </svg>
             </div>
-            <h3 class="paradox-card__title">Carga Cognitiva</h3>
-            <p class="paradox-card__text">A veces, "difícil de aprender" es el costo necesario para lograr que un sistema sea extremadamente rápido de operar bajo presión.</p>
+            <h3 class="paradox-card__title">La última no siempre gana</h3>
+            <p class="paradox-card__text">La Fase 3 reduce quién puede usarla, pero es infinitamente más útil para el experto y la captura de datos específica. Como desarrolladores tendemos a asumir que la versión final es la mejor — este caso demuestra lo contrario.</p>
           </article>
           <article class="paradox-card">
             <div class="paradox-card__icon" aria-hidden="true">
@@ -300,17 +349,17 @@
                 <circle cx="12" cy="12" r="3"/>
               </svg>
             </div>
-            <h3 class="paradox-card__title">Falso Minimalismo</h3>
-            <p class="paradox-card__text">No reduzcas la complejidad visual si esto obliga a tu usuario experto a dar más clics bajo situaciones de alta presión.</p>
+            <h3 class="paradox-card__title">El usuario define</h3>
+            <p class="paradox-card__text">No podemos decidir desde el código cuál interfaz es mejor. Cada iteración intercambia accesibilidad por profundidad — y eso lo elige el operador y el dominio, no el desarrollador solo.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 8: Conclusiones -->
-    <section class="slide" id="slide-7" data-slide="7">
+    <!-- SLIDE 9: Conclusiones -->
+    <section class="slide" id="slide-8" data-slide="8">
       <div class="slide__inner">
-        <p class="eyebrow">Conclusiones · 14:00 – 15:00</p>
+        <p class="eyebrow">Conclusiones</p>
         <h2 class="slide__title">Construir en <span>público</span></h2>
         <p class="slide__subtitle">
           No teoría de manual — el barro real de iterar un producto en producción, con decisiones difíciles entre UI atractiva y UX eficiente.
@@ -322,7 +371,7 @@
           </article>
           <article class="card">
             <h3 class="card__title">UI atractiva vs. UX eficiente</h3>
-            <p class="card__text">A veces ganan los botones feos. La interfaz "fea" puede ser la mejor experiencia de usuario si el dominio lo exige.</p>
+            <p class="card__text">A veces ganan los controles saturados. Una interfaz saturada puede ser la mejor experiencia de usuario si el dominio lo exige.</p>
           </article>
           <article class="card">
             <h3 class="card__title">Escalar con el usuario</h3>
@@ -330,16 +379,16 @@
           </article>
         </div>
         <div class="thesis-block" style="margin-top: 2rem;">
-          <p>El mejor diseño no es el más bonito. Es el que deja al usuario experto trabajar más rápido.</p>
+          <p>El mejor diseño no es el más bonito. Es el que permite al usuario experto trabajar más rápido.</p>
         </div>
       </div>
     </section>
 
-    <!-- SLIDE 9: Q&A -->
-    <section class="slide slide--qa" id="slide-8" data-slide="8">
+    <!-- SLIDE 10: Q&A -->
+    <section class="slide slide--qa" id="slide-9" data-slide="9">
       <div class="slide__inner">
         <div class="qa-icon" aria-hidden="true">?</div>
-        <p class="eyebrow" style="justify-content: center;">15:00 – 20:00</p>
+        <p class="eyebrow" style="justify-content: center;">Preguntas</p>
         <h2 class="slide__title">Preguntas y <span>respuestas</span></h2>
         <p class="slide__subtitle" style="text-align: center; margin: 0 auto 1rem;">
           Gracias por escuchar. ¿Quedo alguna pregunta?
@@ -359,6 +408,7 @@
     <button class="nav-dot" data-slide="6" aria-label="Diapositiva 7"></button>
     <button class="nav-dot" data-slide="7" aria-label="Diapositiva 8"></button>
     <button class="nav-dot" data-slide="8" aria-label="Diapositiva 9"></button>
+    <button class="nav-dot" data-slide="9" aria-label="Diapositiva 10"></button>
   </div>
 
   <nav class="bottom-nav" aria-label="Controles de navegación">

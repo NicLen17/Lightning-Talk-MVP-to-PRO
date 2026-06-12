@@ -19,6 +19,12 @@
   let touchStartY = 0;
   let touchEndY = 0;
 
+  const mobileQuery = window.matchMedia("(max-width: 900px)");
+
+  function isMobileLayout() {
+    return mobileQuery.matches;
+  }
+
   counterTotal.textContent = String(totalSlides).padStart(2, "0");
 
   function goToSlide(index) {
@@ -100,17 +106,21 @@
 
   slides.forEach((slide) => observer.observe(slide));
 
-  document.querySelector(".slides-wrapper").addEventListener(
+  const slidesWrapper = document.querySelector(".slides-wrapper");
+
+  slidesWrapper.addEventListener(
     "touchstart",
     (e) => {
+      if (isMobileLayout()) return;
       touchStartY = e.changedTouches[0].screenY;
     },
     { passive: true }
   );
 
-  document.querySelector(".slides-wrapper").addEventListener(
+  slidesWrapper.addEventListener(
     "touchend",
     (e) => {
+      if (isMobileLayout()) return;
       touchEndY = e.changedTouches[0].screenY;
       const diff = touchStartY - touchEndY;
       if (Math.abs(diff) < 50) return;
@@ -120,7 +130,7 @@
     { passive: true }
   );
 
-  document.querySelectorAll(".screenshot-frame img").forEach((img) => {
+  document.querySelectorAll(".screenshot-frame img, .media-frame img").forEach((img) => {
     img.addEventListener("click", () => {
       lightboxImg.src = img.src;
       lightboxImg.alt = img.alt;
