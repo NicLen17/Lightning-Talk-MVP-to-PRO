@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="De MVP a Pro — Lightning Talk sobre UI/UX en Volley Manager. Cuando la interfaz compleja es la mejor experiencia de usuario.">
+  <meta name="theme-color" content="#ffffff">
+  <title>De MVP a Pro — Lightning Talk | Volley Manager</title>
+  <link rel="icon" href="img/icon-512.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="progress-bar" aria-hidden="true">
+    <div class="progress-bar__fill"></div>
+  </div>
+
+  <header class="site-header">
+    <a href="#slide-0" class="brand">
+      <img src="img/icon-512.png" alt="Volley Manager" class="brand__logo" width="36" height="36">
+      <span class="brand__text">Volley Manager</span>
+    </a>
+    <div class="slide-counter" aria-live="polite">
+      <span class="slide-counter__current">01</span>
+      <span aria-hidden="true"> / </span>
+      <span class="slide-counter__total">09</span>
+    </div>
+  </header>
+
+  <nav class="side-nav" aria-label="Navegación de diapositivas">
+    <button class="nav-dot active" data-slide="0" aria-label="Diapositiva 1: Inicio"></button>
+    <button class="nav-dot" data-slide="1" aria-label="Diapositiva 2: El problema"></button>
+    <button class="nav-dot" data-slide="2" aria-label="Diapositiva 3: La tesis"></button>
+    <button class="nav-dot" data-slide="3" aria-label="Diapositiva 4: Fase 1 MVP"></button>
+    <button class="nav-dot" data-slide="4" aria-label="Diapositiva 5: Fase 2 Visual"></button>
+    <button class="nav-dot" data-slide="5" aria-label="Diapositiva 6: Fase 3 Pro"></button>
+    <button class="nav-dot" data-slide="6" aria-label="Diapositiva 7: La paradoja"></button>
+    <button class="nav-dot" data-slide="7" aria-label="Diapositiva 8: Conclusiones"></button>
+    <button class="nav-dot" data-slide="8" aria-label="Diapositiva 9: Q&A"></button>
+  </nav>
+
+  <main class="slides-wrapper" id="slides">
+
+    <!-- SLIDE 1: Hero -->
+    <section class="slide slide--hero" id="slide-0" data-slide="0">
+      <div class="slide__inner">
+        <div>
+          <p class="eyebrow">Lightning Talk · UTN</p>
+          <h1 class="slide__title slide__title--hero">De <span>MVP</span> a Pro</h1>
+          <p class="slide__subtitle">
+            Cuando la interfaz "fea" es la mejor experiencia de usuario.
+            Construyendo en público el módulo de scouting de Volley Manager.
+          </p>
+          <div class="hero-meta">
+            <span class="tag tag--red">15 min + Q&A</span>
+            <span class="tag">UI / UX</span>
+            <span class="tag">Producto real</span>
+          </div>
+          <p class="hero-author">
+            <strong>Fabio Ramos</strong> · Principal Software Developer en
+            <a href="https://www.caw.com.ar/" target="_blank" rel="noopener noreferrer">CAW Tech</a>
+          </p>
+          <p class="hero-links">
+            <a href="https://www.linkedin.com/in/fabioramosnic" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://www.fabioramos.com.ar" target="_blank" rel="noopener noreferrer">Web</a>
+            <a href="mailto:fabioramosnic@gmail.com">Email</a>
+            <a href="https://www.instagram.com/fabioramosnic/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.linkedin.com/company/caw-tech-arg" target="_blank" rel="noopener noreferrer">CAW Tech</a>
+          </p>
+        </div>
+        <img
+          src="img/icon-512.png"
+          alt="Logo de Volley Manager — pelota de vóley estilizada"
+          class="hero-logo"
+          width="220"
+          height="220"
+        >
+      </div>
+    </section>
+
+    <!-- SLIDE 2: El problema -->
+    <section class="slide" id="slide-1" data-slide="1">
+      <div class="slide__inner">
+        <p class="eyebrow">Introducción · 0:00 – 3:00</p>
+        <h2 class="slide__title">El problema del <span>tiempo real</span></h2>
+        <p class="slide__subtitle">
+          Registrar acciones de vóley a la velocidad de un partido en vivo.
+          Cada segundo cuenta. Cada clic importa.
+        </p>
+        <div class="card-grid">
+          <article class="card">
+            <h3 class="card__title">Volley Manager</h3>
+            <p class="card__text">Plataforma de gestión deportiva usada en producción para scouting profesional de vóley.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">El desafío</h3>
+            <p class="card__text">Un scouter debe capturar decenas de acciones por set sin perder el ritmo del partido.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">La pregunta</h3>
+            <p class="card__text">¿Qué interfaz maximiza velocidad y precisión para un usuario experto?</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: La tesis -->
+    <section class="slide" id="slide-2" data-slide="2">
+      <div class="slide__inner">
+        <p class="eyebrow">La tesis central</p>
+        <h2 class="slide__title">Minimalista <span>≠</span> Mejor UX</h2>
+        <div class="slide__body">
+          <p>La regla clásica del diseño dice: menos es más. Interfaz limpia, carga cognitiva baja, curva de aprendizaje suave.</p>
+          <p>Pero en entornos profesionales de alta exigencia — como el deporte en tiempo real — esa regla se rompe.</p>
+        </div>
+        <div class="thesis-block">
+          <p>Aumentar la complejidad visual y saturar la pantalla intencionalmente puede ser el camino correcto para maximizar la velocidad del usuario experto.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <strong>Fase 1 — MVP Tabular</strong>
+              <span>3:00 – 6:00 · Tabla clásica, curva cero, operación lenta</span>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <strong>Fase 2 — Salto Espacial</strong>
+              <span>6:00 – 9:00 · Mapeo mental directo, aire desperdiciado</span>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <strong>Fase 3 — Herramienta Pro</strong>
+              <span>9:00 – 13:00 · Eficiencia operativa máxima, símbolos internacionales</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: Fase 1 -->
+    <section class="slide slide--phase" id="slide-3" data-slide="3">
+      <div class="slide__inner">
+        <div>
+          <span class="phase-badge">FASE 1</span>
+          <p class="phase-time">3:00 – 6:00</p>
+          <h2 class="slide__title">MVP <span>Tabular</span></h2>
+          <ul class="detail-list">
+            <li>
+              <strong>Solución inicial:</strong>
+              Una planilla técnica tradicional. Botones de "+" y "−" para fundamentos básicos como puntos, aces, bloqueos y errores.
+            </li>
+            <li>
+              <strong>Experiencia (UX):</strong>
+              Curva de aprendizaje casi nula. Altamente intuitiva para cualquier usuario — si sabés leer una tabla, sabés usarla.
+            </li>
+            <li>
+              <strong>El límite real:</strong>
+              Inviable para el ritmo frenético del vóley en vivo. Falta contexto espacial: el scouter piensa en zonas y jugadores en cancha, no en filas de una planilla.
+            </li>
+            <li>
+              <strong>Veredicto:</strong>
+              Cumple el requisito a nivel de código, pero falla operativamente bajo presión de partido.
+            </li>
+          </ul>
+        </div>
+        <figure>
+          <div class="screenshot-frame">
+            <img
+              src="img/scout-1.png"
+              alt="Fase 1: Planilla técnica tabular con estadísticas de jugadores y botones incrementales"
+              loading="lazy"
+            >
+          </div>
+          <figcaption class="screenshot-caption">Planilla técnica — interfaz tabular del MVP</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: Fase 2 -->
+    <section class="slide slide--phase" id="slide-4" data-slide="4">
+      <div class="slide__inner">
+        <div>
+          <span class="phase-badge">FASE 2</span>
+          <p class="phase-time">6:00 – 9:00</p>
+          <h2 class="slide__title">Salto <span>Espacial</span></h2>
+          <p class="phase-subtitle">Mapeo Mental Directo</p>
+          <ul class="detail-list">
+            <li>
+              <strong>El salto conceptual:</strong>
+              Pasamos de leer una lista de nombres a tocar zonas de una cancha en vivo. El analista asocia mentalmente al jugador con su posición real en el campo.
+            </li>
+            <li>
+              <strong>El nuevo cuello de botella:</strong>
+              La distancia física que recorre el mouse entre seleccionar un jugador (izquierda) y clickear la acción (derecha) consume fracciones de segundo críticas en cada rally.
+            </li>
+            <li>
+              <strong>Evaluación UX:</strong>
+              Demasiado "aire desperdiciado" visualmente. La UX mejora en comprensión y mapeo mental, pero no alcanza el límite de velocidad que exige el scouting de alto rendimiento.
+            </li>
+          </ul>
+        </div>
+        <figure>
+          <div class="screenshot-frame">
+            <img
+              src="img/scout-2.png"
+              alt="Fase 2: Interfaz con cancha en vivo, zonas de jugadores y panel de scouting"
+              loading="lazy"
+            >
+          </div>
+          <figcaption class="screenshot-caption">Cancha en vivo + control de scouting</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: Fase 3 -->
+    <section class="slide slide--phase" id="slide-5" data-slide="5">
+      <div class="slide__inner">
+        <div>
+          <span class="phase-badge">FASE 3</span>
+          <p class="phase-time">9:00 – 13:00</p>
+          <h2 class="slide__title">Herramienta <span>Pro</span></h2>
+          <p class="phase-subtitle">Eficiencia Operativa Máxima</p>
+          <ul class="detail-list">
+            <li>
+              <strong>Dashboard denso y full-width:</strong>
+              Implementamos símbolos internacionales estandarizados de scouting —
+              <span class="inline-symbols">#, +, /, −, =</span>
+              — organizados en una grilla por tipo de acción: recepción, contraataque, bloqueo y defensa.
+            </li>
+            <li>
+              <strong>Carga cognitiva altísima:</strong>
+              La interfaz es intencionalmente compleja para el novato, pero se convierte en la herramienta definitiva para el analista profesional que ya domina el dominio.
+            </li>
+            <li>
+              <strong>Filosofía UX:</strong>
+              Minimizar el movimiento del cursor y maximizar el uso de atajos de teclado. La UX prioriza <em>performance</em> sobre simplicidad visual — un clic por acción, todo visible de un vistazo.
+            </li>
+          </ul>
+          <div class="symbol-grid" aria-label="Símbolos de scouting internacional">
+            <div class="symbol-btn">#</div>
+            <div class="symbol-btn">+</div>
+            <div class="symbol-btn">!</div>
+            <div class="symbol-btn">/</div>
+            <div class="symbol-btn symbol-btn--error">−</div>
+            <div class="symbol-btn symbol-btn--error">=</div>
+          </div>
+        </div>
+        <figure>
+          <div class="screenshot-frame">
+            <img
+              src="img/scout-3.png"
+              alt="Fase 3: Dashboard Pro con cancha, grilla de símbolos internacionales y controles densos"
+              loading="lazy"
+            >
+          </div>
+          <figcaption class="screenshot-caption">Dashboard Pro — interfaz densa para expertos</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: La Paradoja -->
+    <section class="slide" id="slide-6" data-slide="6">
+      <div class="slide__inner">
+        <p class="eyebrow">La lección · 13:00 – 14:00</p>
+        <h2 class="slide__title">La Paradoja <span>UI vs UX</span></h2>
+        <div class="paradox-grid">
+          <article class="paradox-card">
+            <div class="paradox-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+                <path d="M18 8c1.5 0 3 1 3 2.5v2"/>
+              </svg>
+            </div>
+            <h3 class="paradox-card__title">El Usuario Manda</h3>
+            <p class="paradox-card__text">El MVP era funcional y estético, pero el profesional en la tribuna dictó la necesidad de escalar la interfaz. El usuario final es quien define qué es "buen diseño".</p>
+          </article>
+          <article class="paradox-card">
+            <div class="paradox-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <path d="M12 2a7 7 0 0 1 7 7c0 2.5-1.5 4.5-3 6l-1 3H9l-1-3c-1.5-1.5-3-3.5-3-6a7 7 0 0 1 7-7z"/>
+                <path d="M9 18h6"/>
+              </svg>
+            </div>
+            <h3 class="paradox-card__title">Carga Cognitiva</h3>
+            <p class="paradox-card__text">A veces, "difícil de aprender" es el costo necesario para lograr que un sistema sea extremadamente rápido de operar bajo presión.</p>
+          </article>
+          <article class="paradox-card">
+            <div class="paradox-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+            <h3 class="paradox-card__title">Falso Minimalismo</h3>
+            <p class="paradox-card__text">No reduzcas la complejidad visual si esto obliga a tu usuario experto a dar más clics bajo situaciones de alta presión.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: Conclusiones -->
+    <section class="slide" id="slide-7" data-slide="7">
+      <div class="slide__inner">
+        <p class="eyebrow">Conclusiones · 14:00 – 15:00</p>
+        <h2 class="slide__title">Construir en <span>público</span></h2>
+        <p class="slide__subtitle">
+          No teoría de manual — el barro real de iterar un producto en producción, con decisiones difíciles entre UI atractiva y UX eficiente.
+        </p>
+        <div class="card-grid">
+          <article class="card">
+            <h3 class="card__title">Tres iteraciones, tres lecciones</h3>
+            <p class="card__text">Tabular → Espacial → Pro. Cada fase resolvió un problema y creó otro. La iteración no es fracaso, es el proceso.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">UI atractiva vs. UX eficiente</h3>
+            <p class="card__text">A veces ganan los botones feos. La interfaz "fea" puede ser la mejor experiencia de usuario si el dominio lo exige.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">Escalar con el usuario</h3>
+            <p class="card__text">La UI debe escalar en complejidad junto con la expertise del operador. No hay que tenerle miedo a saturar la pantalla.</p>
+          </article>
+        </div>
+        <div class="thesis-block" style="margin-top: 2rem;">
+          <p>El mejor diseño no es el más bonito. Es el que deja al usuario experto trabajar más rápido.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 9: Q&A -->
+    <section class="slide slide--qa" id="slide-8" data-slide="8">
+      <div class="slide__inner">
+        <div class="qa-icon" aria-hidden="true">?</div>
+        <p class="eyebrow" style="justify-content: center;">15:00 – 20:00</p>
+        <h2 class="slide__title">Preguntas y <span>respuestas</span></h2>
+        <p class="slide__subtitle" style="text-align: center; margin: 0 auto 1rem;">
+          Gracias por escuchar. ¿Quedo alguna pregunta?
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="mobile-dots" aria-label="Indicador de diapositivas">
+    <button class="nav-dot active" data-slide="0" aria-label="Diapositiva 1"></button>
+    <button class="nav-dot" data-slide="1" aria-label="Diapositiva 2"></button>
+    <button class="nav-dot" data-slide="2" aria-label="Diapositiva 3"></button>
+    <button class="nav-dot" data-slide="3" aria-label="Diapositiva 4"></button>
+    <button class="nav-dot" data-slide="4" aria-label="Diapositiva 5"></button>
+    <button class="nav-dot" data-slide="5" aria-label="Diapositiva 6"></button>
+    <button class="nav-dot" data-slide="6" aria-label="Diapositiva 7"></button>
+    <button class="nav-dot" data-slide="7" aria-label="Diapositiva 8"></button>
+    <button class="nav-dot" data-slide="8" aria-label="Diapositiva 9"></button>
+  </div>
+
+  <nav class="bottom-nav" aria-label="Controles de navegación">
+    <button class="nav-btn" id="btn-prev" aria-label="Diapositiva anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+      <span>Anterior</span>
+    </button>
+    <button class="nav-btn" id="btn-next" aria-label="Siguiente diapositiva">
+      <span>Siguiente</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <path d="M9 18l6-6-6-6"/>
+      </svg>
+    </button>
+  </nav>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada de captura">
+    <button class="lightbox__close" id="lightbox-close" aria-label="Cerrar">&times;</button>
+    <img src="" alt="" id="lightbox-img">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
